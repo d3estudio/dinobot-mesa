@@ -22,7 +22,10 @@ Renomear `sample.env` para `.env` e preencher as credenciais. Em seguida:
 - https://d3.do
 - https://mesa.do
 
-```The MIT License
+# licence
+
+```
+The MIT License
 
 Copyright (c) 2010-2018 Google, Inc. http://angularjs.org
 
