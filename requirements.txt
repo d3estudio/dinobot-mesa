@@ -1,0 +1,4 @@
+ipython
+requests
+simplejson
+tornado

@@ -1,0 +1,17 @@
+version: '2'
+services:
+  api:
+    restart: always
+    build: .
+    env_file:
+      .env
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    command: bash -c "python main.py"
+    networks:
+      - custom_network
+
+networks:
+  custom_network:

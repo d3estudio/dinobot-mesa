@@ -1,0 +1,10 @@
+.env
+.git
+__pycache__
+*.zip
+env
+build_ebs
+docker-compose.yml
+Makefile
+.coverage
+tmp/tflearn_logs/*
