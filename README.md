@@ -1,6 +1,6 @@
 # dinobot-mesa
 
-Este bot foi criado para automatizar o processo de gerenciamento do restaurante Tempeiro da Familia, participante do quadro Missao Digital, do Luciano Huck.
+Este bot é um projeto de inteligência artificial criado para automatizar o processo de gerenciamento do restaurante Tempero da Família, participante do quadro Missão Digital do Caldeirão do Huck.
 
 # setup
 
