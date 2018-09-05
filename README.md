@@ -21,6 +21,7 @@ Renomear `sample.env` para `.env` e preencher as credenciais. Em seguida:
 
 - https://d3.do
 - https://mesa.do
+- https://github.com/vFragosop
 
 # licence
 
