@@ -36,33 +36,29 @@
           </div>
           <div class="uk-card-body">
             <div class="uk-card-title uk-grid-small uk-margin uk-flex-bottom" data-uk-grid>
-              <div class="uk-width-expand">
-                Delivery
-              </div>
-              <small :class="color(netMarginByCategory('Delivery'))">
-                {{ percentage(netMarginByCategory('Delivery')) }}
-              </small>
+              <div class="uk-width-expand">Delivery</div>
+              <small class="uk-text-muted">{{ percentage(contributionByCategory('Delivery')) }}</small>
             </div>
             <div class="uk-grid-small" data-uk-grid>
-              <div class="uk-width-expand" data-uk-leader>
-                Faturamento
-              </div>
+              <div class="uk-width-expand" data-uk-leader>Faturamento</div>
               <div>
                 R$ {{ revenueByCategory('Delivery').toFixed(2) }}
               </div>
             </div>
             <div class="uk-grid-small" data-uk-grid>
-              <div class="uk-width-expand" data-uk-leader>
-                Custos
-              </div>
+              <div class="uk-width-expand" data-uk-leader>Custos</div>
               <div :class="color(expensesByCategory('Delivery'))">
                 R$ {{ expensesByCategory('Delivery').toFixed(2) }}
               </div>
             </div>
-            <div class="uk-grid-small uk-text-bold" data-uk-grid>
-              <div class="uk-width-expand" data-uk-leader>
-                Resultado
+            <div class="uk-grid-small" data-uk-grid>
+              <div class="uk-width-expand" data-uk-leader>Margem</div>
+              <div :class="color(resultByCategory('Delivery'))">
+                {{ percentage(netMarginByCategory('Delivery')) }}
               </div>
+            </div>
+            <div class="uk-grid-small uk-text-bold" data-uk-grid>
+              <div class="uk-width-expand" data-uk-leader>Resultado</div>
               <div :class="color(resultByCategory('Delivery'))">
                 R$ {{ resultByCategory('Delivery').toFixed(2) }}
               </div>
@@ -77,33 +73,29 @@
           </div>
           <div class="uk-card-body">
             <div class="uk-card-title uk-grid-small uk-margin uk-flex-bottom" data-uk-grid>
-              <div class="uk-width-expand">
-                Buffet
-              </div>
-              <small :class="color(netMarginByCategory('Buffet'))">
-                {{ percentage(netMarginByCategory('Buffet')) }}
-              </small>
+              <div class="uk-width-expand">Buffet</div>
+              <small class="uk-text-muted">{{ percentage(contributionByCategory('Buffet')) }}</small>
             </div>
             <div class="uk-grid-small" data-uk-grid>
-              <div class="uk-width-expand" data-uk-leader>
-                Faturamento
-              </div>
+              <div class="uk-width-expand" data-uk-leader>Faturamento</div>
               <div>
                 R$ {{ revenueByCategory('Buffet').toFixed(2) }}
               </div>
             </div>
             <div class="uk-grid-small" data-uk-grid>
-              <div class="uk-width-expand" data-uk-leader>
-                Custos
-              </div>
+              <div class="uk-width-expand" data-uk-leader>Custos</div>
               <div :class="color(expensesByCategory('Buffet'))">
                 R$ {{ expensesByCategory('Buffet').toFixed(2) }}
               </div>
             </div>
-            <div class="uk-grid-small uk-text-bold" data-uk-grid>
-              <div class="uk-width-expand" data-uk-leader>
-                Resultado
+            <div class="uk-grid-small" data-uk-grid>
+              <div class="uk-width-expand" data-uk-leader>Margem</div>
+              <div :class="color(resultByCategory('Buffet'))">
+                {{ percentage(netMarginByCategory('Buffet')) }}
               </div>
+            </div>
+            <div class="uk-grid-small uk-text-bold" data-uk-grid>
+              <div class="uk-width-expand" data-uk-leader>Resultado</div>
               <div :class="color(resultByCategory('Buffet'))">
                 R$ {{ resultByCategory('Buffet').toFixed(2) }}
               </div>
@@ -118,33 +110,29 @@
           </div>
           <div class="uk-card-body">
             <div class="uk-card-title uk-grid-small uk-margin uk-flex-bottom" data-uk-grid>
-              <div class="uk-width-expand">
-                Empresas
-              </div>
-              <small :class="color(netMarginByCategory('Empresas'))">
-                {{ percentage(netMarginByCategory('Empresas')) }}
-              </small>
+              <div class="uk-width-expand">Empresas</div>
+              <small class="uk-text-muted">{{ percentage(contributionByCategory('Empresas')) }}</small>
             </div>
             <div class="uk-grid-small" data-uk-grid>
-              <div class="uk-width-expand" data-uk-leader>
-                Faturamento
-              </div>
+              <div class="uk-width-expand" data-uk-leader>Faturamento</div>
               <div>
                 R$ {{ revenueByCategory('Empresas').toFixed(2) }}
               </div>
             </div>
             <div class="uk-grid-small" data-uk-grid>
-              <div class="uk-width-expand" data-uk-leader>
-                Custos
-              </div>
+              <div class="uk-width-expand" data-uk-leader>Custos</div>
               <div :class="color(expensesByCategory('Empresas'))">
                 R$ {{ expensesByCategory('Empresas').toFixed(2) }}
               </div>
             </div>
-            <div class="uk-grid-small uk-text-bold" data-uk-grid>
-              <div class="uk-width-expand" data-uk-leader>
-                Resultado
+            <div class="uk-grid-small" data-uk-grid>
+              <div class="uk-width-expand" data-uk-leader>Margem</div>
+              <div :class="color(resultByCategory('Empresas'))">
+                {{ percentage(netMarginByCategory('Empresas')) }}
               </div>
+            </div>
+            <div class="uk-grid-small uk-text-bold" data-uk-grid>
+              <div class="uk-width-expand" data-uk-leader>Resultado</div>
               <div :class="color(resultByCategory('Empresas'))">
                 R$ {{ resultByCategory('Empresas').toFixed(2) }}
               </div>
@@ -215,8 +203,11 @@ export default {
       return this.salesByCategory(category)
         .reduce((total, item) => total + item.TotalPrice, 0);
     },
+    contributionByCategory(category) {
+      return (this.revenueByCategory(category) / this.totalRevenue);
+    },
     expensesByCategory(category) {
-      return this.totalExpenses * (this.revenueByCategory(category) / this.totalRevenue);
+      return this.totalExpenses * this.contributionByCategory(category);
     },
     resultByCategory(category) {
       return this.revenueByCategory(category) + this.expensesByCategory(category);
