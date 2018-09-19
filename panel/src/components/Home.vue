@@ -54,8 +54,8 @@
               <div class="uk-width-expand" data-uk-leader>
                 Custos
               </div>
-              <div :class="color(costsByCategory('Delivery'))">
-                R$ {{ costsByCategory('Delivery').toFixed(2) }}
+              <div :class="color(expensesByCategory('Delivery'))">
+                R$ {{ expensesByCategory('Delivery').toFixed(2) }}
               </div>
             </div>
             <div class="uk-grid-small uk-text-bold" data-uk-grid>
@@ -95,8 +95,8 @@
               <div class="uk-width-expand" data-uk-leader>
                 Custos
               </div>
-              <div :class="color(costsByCategory('Buffet'))">
-                R$ {{ costsByCategory('Buffet').toFixed(2) }}
+              <div :class="color(expensesByCategory('Buffet'))">
+                R$ {{ expensesByCategory('Buffet').toFixed(2) }}
               </div>
             </div>
             <div class="uk-grid-small uk-text-bold" data-uk-grid>
@@ -136,8 +136,8 @@
               <div class="uk-width-expand" data-uk-leader>
                 Custos
               </div>
-              <div :class="color(costsByCategory('Empresas'))">
-                R$ {{ costsByCategory('Empresas').toFixed(2) }}
+              <div :class="color(expensesByCategory('Empresas'))">
+                R$ {{ expensesByCategory('Empresas').toFixed(2) }}
               </div>
             </div>
             <div class="uk-grid-small uk-text-bold" data-uk-grid>
@@ -166,63 +166,66 @@ export default {
   ],
   data() {
     return {
-      period: 30,
-      percentages: {
-        Buffet: 0.43,
-        Empresas: 0.75,
-        Delivery: 0.71,
-      },
-      expenses: {},
-      items: [],
+      period: 1,
+      financialFlow: [],
+      sales: [],
     };
+  },
+  computed: {
+    totalRevenue() {
+      return this.revenueByCategory('Delivery')
+        + this.revenueByCategory('Buffet')
+        + this.revenueByCategory('Empresas');
+    },
+    totalExpenses() {
+      return this.financialFlow.DayRows
+        .find(row => row.Name === 'Saídas')
+        .Balance;
+    },
   },
   methods: {
     async loadHandler() {
-      const sales = await Client.post('ReportSale/ListReportSaleByTotal', {
+      await this.loadSales();
+      await this.loadExpenses();
+    },
+    async loadSales() {
+      const response = await Client.post('ReportSale/ListReportSaleByTotal', {
         StartDate: DateTime.local().endOf('day').minus({ days: this.period }).toISO(),
         EndDate: DateTime.local().endOf('day').toISO(),
       });
 
-      this.items = sales.data.Items;
-
-      const expenses = await Client.post('FinancialCashFlow/Get', {
+      this.sales = response.data.Items;
+    },
+    async loadExpenses() {
+      const response = await Client.post('FinancialCashFlow/Get', {
         DateFrom: DateTime.local().endOf('day').minus({ days: this.period }).toISO(),
         DateTo: DateTime.local().endOf('day').toISO(),
       });
 
-      this.expenses = expenses.data.Item.DayRows.find(row => row.Name === 'Saídas');
+      this.financialFlow = response.data.Item;
     },
-    itemsByCategory(category) {
-      return this.items.filter(item => item.Category === category);
-    },
-    revenueTotal() {
-      return this.items
-        .reduce((total, item) => total + item.TotalPrice, 0);
+    /**
+     * By Category
+     */
+    salesByCategory(category) {
+      return this.sales.filter(item => item.Category === category);
     },
     revenueByCategory(category) {
-      return this.itemsByCategory(category)
+      return this.salesByCategory(category)
         .reduce((total, item) => total + item.TotalPrice, 0);
     },
-    fixedCostsTotal() {
-      // TODO: Remove this hardcoded -76000
-      return this.revenueTotal() - this.expenses.Balance;
-    },
-    fixedCostsByCategory(category) {
-      return this.fixedCostsTotal() * -(this.revenueByCategory(category) / this.revenueTotal());
-    },
-    variableCostsByCategory(category) {
-      return -this.percentages[category] * this.revenueByCategory(category);
-    },
-    costsByCategory(category) {
-      return this.variableCostsByCategory(category) + this.fixedCostsByCategory(category);
-    },
-    totalItemsByCategory(category) {
-      return this.itemsByCategory(category)
-        .reduce((total, item) => total + item.Quantity, 0);
+    expensesByCategory(category) {
+      return this.totalExpenses * (this.revenueByCategory(category) / this.totalRevenue);
     },
     resultByCategory(category) {
-      return this.revenueByCategory(category) + this.costsByCategory(category);
+      return this.revenueByCategory(category) + this.expensesByCategory(category);
     },
+    netMarginByCategory(category) {
+      return 1 + (this.expensesByCategory(category) / this.revenueByCategory(category));
+    },
+    /**
+     * Utils
+     */
     percentage(value) {
       return `${Math.round(value * 100 || 0)}%`;
     },
@@ -231,9 +234,6 @@ export default {
         'uk-text-danger': value < 0,
         'uk-text-success': value > 0,
       };
-    },
-    netMarginByCategory(category) {
-      return 1 + (this.costsByCategory(category) / this.revenueByCategory(category));
     },
   },
   watch: {
