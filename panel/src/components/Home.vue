@@ -10,7 +10,7 @@
     </div>
     <div class="uk-flex uk-flex-none" data-uk-grid>
       <!-- TODO: Period is disabled because we added expenses API in the last minute -->
-      <!-- <div class="uk-flex-first@s uk-width-1-1 uk-width-1-2@s">
+      <div class="uk-flex-first@s uk-width-1-1 uk-width-1-2@s">
         <ul class="uk-subnav uk-subnav-pill">
           <li :class="{ 'uk-active': period === 1 }">
             <a @click.prevent="period = 1">Hoje</a>
@@ -22,7 +22,7 @@
             <a @click.prevent="period = 30">30 Dias</a>
           </li>
         </ul>
-      </div> -->
+      </div>
     </div>
     <div v-if="loading" class="uk-flex-auto uk-flex uk-flex-center uk-flex-middle">
       <div data-uk-spinner/>
