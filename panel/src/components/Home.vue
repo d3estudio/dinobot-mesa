@@ -1,7 +1,8 @@
 <template>
   <div class="uk-flex uk-flex-column uk-padding">
     <div class="uk-text-right">
-      <router-link class="uk-link-reset" :to="{ name: 'logout' }">
+      Olá Xandão,
+      <router-link class="uk-link-reset uk-text-bold" :to="{ name: 'logout' }">
         Sair <span data-uk-icon="icon: sign-out"/>
       </router-link>
     </div>
