@@ -1,0 +1,2047 @@
+{
+    "onboarding":
+    {
+        "$contentActions": [
+        {
+            "input":
+            {
+                "bypass": false,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "399b192f-f5f3-4edd-b2e9-49afdeb992bd",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": false,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$invalid": false,
+            "$$hashKey": "object:4398"
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "welcome",
+            "conditions": [
+            {
+                "source": "input",
+                "comparison": "matches",
+                "values": [".*"],
+                "$$hashKey": "object:4434"
+            }],
+            "$connId": "con_3",
+            "$invalid": false,
+            "$$hashKey": "object:4417"
+        }],
+        "$enteringCustomActions": [],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "fallback",
+            "$invalid": false
+        },
+        "id": "onboarding",
+        "root": true,
+        "$position":
+        {
+            "top": "62px",
+            "left": "249px"
+        },
+        "$title": "Start",
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "fallback":
+    {
+        "$contentActions": [
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "44b740c2-be50-4408-842d-bff5951a9de0",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:4023",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "error",
+            "conditions": [
+            {
+                "source": "input",
+                "comparison": "matches",
+                "values": [".*"],
+                "$$hashKey": "object:4057"
+            }],
+            "$connId": "con_8",
+            "$$hashKey": "object:4040",
+            "$invalid": false
+        }],
+        "$enteringCustomActions": [],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "onboarding",
+            "$invalid": false
+        },
+        "id": "fallback",
+        "$position":
+        {
+            "top": "554px",
+            "left": "249px"
+        },
+        "$title": "Exceptions",
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "welcome":
+    {
+        "$contentActions": [
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "5cad1e44-e35d-468a-9cbf-0a7241754019",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content":
+                    {
+                        "state": "composing",
+                        "interval": 1000
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "5cad1e44-e35d-468a-9cbf-0a7241754019",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content":
+                        {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:11083"
+        },
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "1c0c5bf9-dc10-4bb5-b3a7-715c89e17e8c",
+                    "type": "text/plain",
+                    "content": "{{contact.identity}}"
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "1c0c5bf9-dc10-4bb5-b3a7-715c89e17e8c",
+                        "type": "text/plain",
+                        "content": "{{contact.identity}}"
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:11084"
+        },
+        {
+            "input":
+            {
+                "bypass": false,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "5c827dc4-37fe-440a-91be-7eab3a215f6e",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$invalid": false,
+            "$$hashKey": "object:2738"
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "431759e9-1510-4274-909b-1f31f0aa5698",
+            "$connId": "con_13",
+            "conditions": [
+            {
+                "$$hashKey": "object:6822",
+                "source": "context",
+                "comparison": "contains",
+                "variable": "contact.identity",
+                "values": ["137761371"]
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:6708"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ExecuteScript",
+            "$title": "Get Today",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "// get today\nfunction run(inputVariable1, inputVariable2) {\n    return new Date().toISOString();\n}",
+                "inputVariables": [],
+                "outputVariable": "todayDate"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Get first day",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "// get first day of the month\nfunction run(inputVariable1, inputVariable2) {\n\n    var date = new Date();\n    var y = date.getFullYear();\n    var m = date.getMonth();\n    var firstDay = new Date(y, m, 1);\n\n    return firstDay.toISOString();\n}",
+                "inputVariables": [],
+                "outputVariable": "firstDay"
+            }
+        }],
+        "$leavingCustomActions": [
+        {
+            "type": "ExecuteScript",
+            "$title": "Execute script",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(userContent) {\n    try {\n        var _parsed = JSON.parse(userContent);\n        return _parsed.uri; //Return value will be saved as \"Return value variable\" field name\n    }\n    catch(err) {\n        var _parsed = \"\";\n    }\n    return userContent;\n}",
+                "inputVariables": ["input.content"],
+                "outputVariable": "audioUrl"
+            }
+        }],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "fallback",
+            "$invalid": false
+        },
+        "id": "welcome",
+        "$position":
+        {
+            "top": "219px",
+            "left": "250px"
+        },
+        "$title": "Initial Parse",
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "error":
+    {
+        "$contentActions": [
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "00000000-0000-0000-0000-000000000002",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content":
+                    {
+                        "state": "composing",
+                        "interval": 1000
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "00000000-0000-0000-0000-000000000002",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content":
+                        {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$$hashKey": "object:3796",
+            "$invalid": false
+        },
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "00000000-0000-0000-0000-000000000003",
+                    "type": "text/plain",
+                    "content": "Desculpe, não consegui entender!"
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "00000000-0000-0000-0000-000000000003",
+                        "type": "text/plain",
+                        "content": "Desculpe, não consegui entender!"
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$$hashKey": "object:3797",
+            "$invalid": false
+        },
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "b586f0a8-f921-4839-b8da-c76d8edfc936",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:3798",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [],
+        "$enteringCustomActions": [],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "welcome",
+            "$invalid": false
+        },
+        "id": "error",
+        "$position":
+        {
+            "top": "701px",
+            "left": "249px"
+        },
+        "$title": "Default error",
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "431759e9-1510-4274-909b-1f31f0aa5698":
+    {
+        "$contentActions": [
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "75126b6a-bfb1-4f5a-89f2-089d76f9da57",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:4196",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "7b015613-1ff1-4ef7-8636-ff09ac224118",
+            "$connId": "con_18",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "equals",
+                "values": ["expense"],
+                "$$hashKey": "object:19802",
+                "variable": "userIntention"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:19793"
+        },
+        {
+            "stateId": "8070daa2-83dc-4eb9-ad1c-1a1e4fe555f7",
+            "$connId": "con_23",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "equals",
+                "values": ["receita"],
+                "$$hashKey": "object:21340",
+                "variable": "userIntention"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:21332"
+        },
+        {
+            "stateId": "21cedac7-0252-45a3-8c2e-88a92b8578a7",
+            "$connId": "con_28",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "equals",
+                "values": ["status_report"],
+                "$$hashKey": "object:23336",
+                "variable": "userIntention"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:23328"
+        },
+        {
+            "stateId": "63381330-90c1-4668-aacb-fb91901edc89",
+            "$connId": "con_33",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "equals",
+                "values": ["delete"],
+                "$$hashKey": "object:2930",
+                "variable": "userIntention"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:2922"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Get Speech",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {},
+                "method": "POST",
+                "body": "{\"url\": \"{{audioUrl}}\"}",
+                "uri": "http://your_api_here:8000/",
+                "responseBodyVariable": "parsedSpeech",
+                "responseStatusVariable": "parsedSpeechHTTP"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Get intention",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(speech) {\n    var _speech = JSON.parse(speech);\n    return _speech.nlp.intention.id; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["parsedSpeech"],
+                "outputVariable": "userIntention"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Get user value",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(speech) {\n    var _speech = JSON.parse(speech);\n    return _speech.value; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["parsedSpeech"],
+                "outputVariable": "userValue"
+            }
+        }],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "fallback",
+            "$invalid": false
+        },
+        "id": "431759e9-1510-4274-909b-1f31f0aa5698",
+        "root": false,
+        "$title": "Reply The Content",
+        "$position":
+        {
+            "top": "403px",
+            "left": "249px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "674a29d1-98e0-46d1-8982-bff5474df641":
+    {
+        "$contentActions": [
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "11cc653d-352c-436a-9582-442809ffad6b",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:7285",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "6ddcc688-8468-435c-97be-6e036b8a05d7",
+            "$connId": "con_38",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "greaterThan",
+                "values": ["0"],
+                "$$hashKey": "object:22626",
+                "variable": "userValue"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:22617"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ExecuteScript",
+            "$title": "Execute script",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(speech) {\n    var _speech = JSON.parse(speech);\n    return _speech.nlp.entities.value; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["parsedSpeech"],
+                "outputVariable": "userPlace"
+            }
+        }],
+        "$leavingCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Save Expense",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {
+                    "Authorization": "Bearer {{apiToken}}"
+                },
+                "method": "POST",
+                "body": "{\"Item\":{\"EventID\":0,\"Date\":\"{{todayDate}}\",\"DefaultPaymentTypeID\":1,\"Description\":\"{{userPlace}}\",\"IsCredit\":false,\"Value\":\"{{userValue}}\",\"OriginID\":2,\"OriginKey\":0,\"EntryEvents\":[{\"Entry\":{\"Date\":\"2018-08-30T10:28:59.485\",\"PaymentTypeID\":1,\"PaymentType\":{\"PaymentTypeID\":1,\"Name\":\"DINHEIRO\",\"EcfAlias\":null,\"Active\":false,\"IsPaymentReturn\":false,\"IsExchange\":false,\"IsDeposit\":false,\"IcoImage\":null,\"IsPdv\":true,\"Order\":1,\"OrderExchange\":0,\"IsTef\":false,\"Code\":null,\"IsPreDefined\":false,\"IsOnline\":false,\"PaymentConditions\":null},\"Account\":{\"AccountID\":1,\"Name\":\"Caixa\",\"Active\":false,\"IsDefault\":false,\"IsInternal\":false,\"BankID\":0,\"BankName\":null,\"AgencyNumber\":null,\"AgencyDigit\":null,\"AccountNumber\":null,\"AccountDigit\":null,\"IsPreDefined\":false,\"Bank\":null},\"IsCredit\":false,\"Type\":1,\"AccountID\":1,\"Value\":\"{{userValue}}\"},\"Value\":\"{{userValue}}\",\"EventID\":0,\"Balance\":\"{{userValue}}\",\"Single\":true,\"Discount\":0,\"Interest\":0,\"Amortized\":\"{{userValue}}\"}],\"Balance\":0,\"Barcode\":\"\",\"Observation\":\"{{userPlace}}\",\"ManagementAccountID\":58},\"RecurrenceNumber\":0}",
+                "uri": "https://api-erp.marketup.com/v1/FinancialEvent/SavePayable",
+                "responseStatusVariable": "saveStatus",
+                "responseBodyVariable": "saveBody"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Save Payable ID",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1) {\n    var _payable = JSON.parse(inputVariable1);\n    return _payable.Item.EventID; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["saveBody"],
+                "outputVariable": "lastItemId"
+            }
+        }],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "fallback",
+            "$invalid": false
+        },
+        "id": "674a29d1-98e0-46d1-8982-bff5474df641",
+        "root": false,
+        "$title": "Spent",
+        "$position":
+        {
+            "top": "271px",
+            "left": "962px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "6ddcc688-8468-435c-97be-6e036b8a05d7":
+    {
+        "$contentActions": [
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "fcd08db6-b986-4480-a8ac-869292cd4ab9",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content":
+                    {
+                        "state": "composing",
+                        "interval": 1000
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "fcd08db6-b986-4480-a8ac-869292cd4ab9",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content":
+                        {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:45699"
+        },
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "585e8076-09e8-4d95-96aa-284e82e6a43b",
+                    "type": "text/plain",
+                    "content": "Anotado, Xandão! R$ {{userValue}} para {{userPlace}}. Segue me contando que eu sigo controlando!"
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "585e8076-09e8-4d95-96aa-284e82e6a43b",
+                        "type": "text/plain",
+                        "content": "Anotado, Xandão! R$ {{userValue}} para {{userPlace}}. Segue me contando que eu sigo controlando!"
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:1500"
+        },
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "536cf97e-857a-4949-afbe-377ae87d8656",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:7744",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [],
+        "$enteringCustomActions": [],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "welcome",
+            "$invalid": false
+        },
+        "id": "6ddcc688-8468-435c-97be-6e036b8a05d7",
+        "root": false,
+        "$title": "Finish Spent",
+        "$position":
+        {
+            "top": "270px",
+            "left": "1225px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "14e45eda-ed9b-4c89-b90a-a4a87b5d37d1":
+    {
+        "$contentActions": [
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "07ca6abc-4e59-4c89-88c2-39db0d13b6f9",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content":
+                    {
+                        "state": "composing",
+                        "interval": 1000
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "07ca6abc-4e59-4c89-88c2-39db0d13b6f9",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content":
+                        {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:10889"
+        },
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "a12debd2-1514-4033-9053-915baa4fb24f",
+                    "type": "text/plain",
+                    "content": "Até agora você vendeu R${{userSales}} e gastou R${{userExpenses}}"
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "a12debd2-1514-4033-9053-915baa4fb24f",
+                        "type": "text/plain",
+                        "content": "Até agora você vendeu R${{userSales}} e gastou R${{userExpenses}}"
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:10890"
+        },
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "2a89fb21-2947-405d-a221-a3d9662e3e46",
+                        "type": "text/plain",
+                        "textContent": "User input",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:432",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "3f249e9a-4fc2-47f9-b061-a50f78f0eb31",
+            "$connId": "con_43",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "greaterThanOrEquals",
+                "values": ["0"],
+                "$$hashKey": "object:18317",
+                "variable": "userProfit"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:18308"
+        },
+        {
+            "stateId": "dddfbac4-c769-4db9-a53c-bfc44b570760",
+            "$connId": "con_48",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "lessThan",
+                "values": ["0"],
+                "$$hashKey": "object:19797",
+                "variable": "userProfit"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:19789"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Get Profit",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {
+                    "Authorization": "Bearer {{apiToken}}"
+                },
+                "method": "POST",
+                "body": "{\"StartDate\":\"{{firstDay}}\",\"EndDate\":\"{{todayDate}}\"}",
+                "uri": "https://api-erp.marketup.com/v1/ReportSale/ListReportSaleByTotal",
+                "responseStatusVariable": "reportStatus",
+                "responseBodyVariable": "reportBody"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Get Sales",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1) {\n    var _report = JSON.parse(inputVariable1);\n    var _total = 0;\n    for(var i = 0; i < _report.Items.length; i++) {\n        var _item = _report.Items[i].TotalPrice;\n        _total = _total + _item;\n    }\n    return _total; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["reportBody"],
+                "outputVariable": "userSales"
+            }
+        },
+        {
+            "type": "ProcessHttp",
+            "$title": "Get Transactions",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {
+                    "Authorization": "Bearer {{apiToken}}"
+                },
+                "method": "POST",
+                "body": "{\"Page\":1,\"PageSize\":100000,\"Paid\":1,\"DueDateFrom\":\"{{firstDay}}\",\"DueDateTo\":\"{{todayDate}}\"}",
+                "uri": "https://api-erp.marketup.com/v1/FinancialEvent/GetPayablePagedList",
+                "responseStatusVariable": "transactionsStatus",
+                "responseBodyVariable": "transactionsBody"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Get Debt",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1) {\n    var _debt = JSON.parse(inputVariable1);\n    var _total = 0;\n    for(var i = 0; i < _debt.Items.length; i++) {\n        var _item = _debt.Items[i].Value;\n        if (_item > 0) {\n            _total = _total + _item;\n        }\n    }\n    return _total; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["transactionsBody"],
+                "outputVariable": "userExpenses"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "User Profit",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1, inputVariable2) {\n    return inputVariable1 - inputVariable2; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["userSales", "userExpenses"],
+                "outputVariable": "userProfit"
+            }
+        }],
+        "$leavingCustomActions": [
+        {
+            "type": "ExecuteScript",
+            "$title": "User Percentage",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1, inputVariable2) {\n\n    var _sales = inputVariable1;\n    var _expenses = inputVariable2;\n\n    var _percentage = 0;\n\n    if(_expenses < _sales) {\n        _percentage = _expenses * 100 / _sales;\n    } else {\n        _percentage = _sales * 100 / _expenses;\n    }\n    return 100 - parseInt(_percentage); //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["userSales", "userExpenses"],
+                "outputVariable": "userPercentage"
+            }
+        }],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "3f249e9a-4fc2-47f9-b061-a50f78f0eb31",
+            "$invalid": false
+        },
+        "id": "14e45eda-ed9b-4c89-b90a-a4a87b5d37d1",
+        "root": false,
+        "$title": "Status Report",
+        "$position":
+        {
+            "top": "544px",
+            "left": "962px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "7b015613-1ff1-4ef7-8636-ff09ac224118":
+    {
+        "$contentActions": [
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "c3cdef53-466b-41c7-aa18-95cf566625ee",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:3907",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "674a29d1-98e0-46d1-8982-bff5474df641",
+            "$connId": "con_53",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "exists",
+                "values": [],
+                "$$hashKey": "object:4966",
+                "variable": "apiToken"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:4957"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Login",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {},
+                "method": "POST",
+                "body": "{\"Domain\":\"company_domain_here\",\"Login\":\"user_here\",\"LoginType\":\"1\",\"Password\":\"password_here\"}",
+                "responseBodyVariable": "apiToken",
+                "uri": "https://api-erp.marketup.com/v1/auth/authenticate-user"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Set Token",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1) {\n    var _token = JSON.parse(inputVariable1);\n    return _token.AuthToken;\n}",
+                "inputVariables": ["apiToken"],
+                "outputVariable": "apiToken"
+            }
+        }],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "674a29d1-98e0-46d1-8982-bff5474df641",
+            "$invalid": false
+        },
+        "id": "7b015613-1ff1-4ef7-8636-ff09ac224118",
+        "root": false,
+        "$title": "API Login 1",
+        "$position":
+        {
+            "top": "269px",
+            "left": "666px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "21cedac7-0252-45a3-8c2e-88a92b8578a7":
+    {
+        "$contentActions": [
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "c3cdef53-466b-41c7-aa18-95cf566625ee",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$invalid": false,
+            "$$hashKey": "object:6841"
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "14e45eda-ed9b-4c89-b90a-a4a87b5d37d1",
+            "$connId": "con_58",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "exists",
+                "values": [],
+                "variable": "apiToken",
+                "$$hashKey": "object:6914"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:6897"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Login",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {},
+                "method": "POST",
+                "body": "{\"Domain\":\"company_domain_here\",\"Login\":\"user_here\",\"LoginType\":\"1\",\"Password\":\"password_here\"}",
+                "responseBodyVariable": "apiToken",
+                "uri": "https://api-erp.marketup.com/v1/auth/authenticate-user"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Set Token",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1) {\n    var _token = JSON.parse(inputVariable1);\n    return _token.AuthToken;\n}",
+                "inputVariables": ["apiToken"],
+                "outputVariable": "apiToken"
+            }
+        }],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "674a29d1-98e0-46d1-8982-bff5474df641",
+            "$invalid": false
+        },
+        "id": "21cedac7-0252-45a3-8c2e-88a92b8578a7",
+        "root": false,
+        "$title": "API Login 3",
+        "$position":
+        {
+            "top": "543px",
+            "left": "666px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "3f249e9a-4fc2-47f9-b061-a50f78f0eb31":
+    {
+        "$contentActions": [
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "8cbdffd3-1299-4570-8a2e-51ddc81695b5",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content":
+                    {
+                        "state": "composing",
+                        "interval": 1000
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "8cbdffd3-1299-4570-8a2e-51ddc81695b5",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content":
+                        {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:12719"
+        },
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "72661419-5f5f-4077-852e-6164b0cd71c9",
+                    "type": "text/plain",
+                    "content": "Booooa! Lucro de {{userPercentage}}% (R$ {{userDiff}}). Contas em dia é só alegria!"
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "72661419-5f5f-4077-852e-6164b0cd71c9",
+                        "type": "text/plain",
+                        "content": "Booooa! Lucro de {{userPercentage}}% (R$ {{userDiff}}). Contas em dia é só alegria!"
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:12720"
+        },
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "225d2994-0292-47b2-865a-23a4161cd41d",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:11308",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "6aea40cd-df09-49ae-982a-2e1bdddaaef4",
+            "$connId": "con_63",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "exists",
+                "values": [],
+                "$$hashKey": "object:33788",
+                "variable": "userSales"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:33779"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Get Profit",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {
+                    "Authorization": "Bearer {{apiToken}}"
+                },
+                "method": "POST",
+                "body": "{\"StartDate\":\"2018-08-01T00:00:00+00:00\",\"EndDate\":\"2018-09-01T00:00:00+00:00\"}",
+                "uri": "https://api-erp.marketup.com/v1/ReportSale/ListReportSaleByTotal",
+                "responseStatusVariable": "profitStatus",
+                "responseBodyVariable": "profitBody"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Execute script",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1, inputVariable2) {\n    return inputVariable1 - inputVariable2; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["userSales", "userExpenses"],
+                "outputVariable": "userDiff"
+            }
+        }],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "6aea40cd-df09-49ae-982a-2e1bdddaaef4",
+            "$invalid": false
+        },
+        "id": "3f249e9a-4fc2-47f9-b061-a50f78f0eb31",
+        "root": false,
+        "$title": "Profit",
+        "$position":
+        {
+            "top": "481px",
+            "left": "1223px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "dddfbac4-c769-4db9-a53c-bfc44b570760":
+    {
+        "$contentActions": [
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "dd5c4848-8182-4894-8d1c-09e849163d27",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content":
+                    {
+                        "state": "composing",
+                        "interval": 1000
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "dd5c4848-8182-4894-8d1c-09e849163d27",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content":
+                        {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:20664"
+        },
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "5835cb2a-ba98-4f8c-aa20-d0116e2609ba",
+                    "type": "text/plain",
+                    "content": "Tá gastando demais, Xandão! Tamo com prejuízo de {{userPercentage}}% (R$ {{userDiff}}). Assim a gente fica no vermelho!"
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "5835cb2a-ba98-4f8c-aa20-d0116e2609ba",
+                        "type": "text/plain",
+                        "content": "Tá gastando demais, Xandão! Tamo com prejuízo de {{userPercentage}}% (R$ {{userDiff}}). Assim a gente fica no vermelho!"
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:20665"
+        },
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "1edc8a8e-0224-4dd4-9785-46d0b5ccd9dc",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:18889",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "6aea40cd-df09-49ae-982a-2e1bdddaaef4",
+            "$connId": "con_68",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "exists",
+                "values": [],
+                "$$hashKey": "object:35247",
+                "variable": "userExpenses"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:35238"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ExecuteScript",
+            "$title": "Execute script",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1, inputVariable2) {\n    return inputVariable2 - inputVariable1; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["userSales", "userExpenses"],
+                "outputVariable": "userDiff"
+            }
+        }],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "6aea40cd-df09-49ae-982a-2e1bdddaaef4",
+            "$invalid": false
+        },
+        "id": "dddfbac4-c769-4db9-a53c-bfc44b570760",
+        "root": false,
+        "$title": "Debt",
+        "$position":
+        {
+            "top": "604px",
+            "left": "1224px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "6aea40cd-df09-49ae-982a-2e1bdddaaef4":
+    {
+        "$contentActions": [
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "7c73b695-3da2-4577-b138-6ddeab78cc21",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content":
+                    {
+                        "state": "composing",
+                        "interval": 1000
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "7c73b695-3da2-4577-b138-6ddeab78cc21",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content":
+                        {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:33522"
+        },
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "a619afae-40da-466c-aa66-0d88bcc79669",
+                    "type": "application/vnd.lime.web-link+json",
+                    "content":
+                    {
+                        "uri": "https://d3estudio.github.io/dinobot-mesa/",
+                        "target": "blank",
+                        "title": "Veja tudo aqui.",
+                        "text": "",
+                        "previewUri": ""
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "a619afae-40da-466c-aa66-0d88bcc79669",
+                        "type": "application/vnd.lime.web-link+json",
+                        "content":
+                        {
+                            "uri": "https://d3estudio.github.io/dinobot-mesa/",
+                            "target": "blank",
+                            "title": "Veja tudo aqui.",
+                            "text": "",
+                            "previewUri": ""
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:33505"
+        },
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "54eedfad-dfeb-495a-9423-1da3ac3879ea",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:33139",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [],
+        "$enteringCustomActions": [],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "welcome",
+            "$invalid": false
+        },
+        "id": "6aea40cd-df09-49ae-982a-2e1bdddaaef4",
+        "root": false,
+        "$title": "Finish Report",
+        "$position":
+        {
+            "top": "542px",
+            "left": "1454px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "8070daa2-83dc-4eb9-ad1c-1a1e4fe555f7":
+    {
+        "$contentActions": [
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "c3cdef53-466b-41c7-aa18-95cf566625ee",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$invalid": false,
+            "$$hashKey": "object:42067"
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "d84b5315-6092-42aa-8361-cc957b4c9c2e",
+            "$connId": "con_73",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "exists",
+                "values": [],
+                "variable": "apiToken",
+                "$$hashKey": "object:42140"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:42123"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Login",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {},
+                "method": "POST",
+                "body": "{\"Domain\":\"company_domain_here\",\"Login\":\"user_here\",\"LoginType\":\"1\",\"Password\":\"password_here\"}",
+                "responseBodyVariable": "apiToken",
+                "uri": "https://api-erp.marketup.com/v1/auth/authenticate-user"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Set Token",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1) {\n    var _token = JSON.parse(inputVariable1);\n    return _token.AuthToken;\n}",
+                "inputVariables": ["apiToken"],
+                "outputVariable": "apiToken"
+            }
+        }],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "d84b5315-6092-42aa-8361-cc957b4c9c2e",
+            "$invalid": false
+        },
+        "id": "8070daa2-83dc-4eb9-ad1c-1a1e4fe555f7",
+        "root": false,
+        "$title": "API Login 2",
+        "$position":
+        {
+            "top": "400px",
+            "left": "666px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "d84b5315-6092-42aa-8361-cc957b4c9c2e":
+    {
+        "$contentActions": [
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "11cc653d-352c-436a-9582-442809ffad6b",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$invalid": false,
+            "$$hashKey": "object:45393"
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "299fc8f2-f28f-43ac-b07e-bcd61f43670d",
+            "$connId": "con_78",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "greaterThan",
+                "values": ["0"],
+                "variable": "userValue",
+                "$$hashKey": "object:45466"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:45449"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ExecuteScript",
+            "$title": "Execute script",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(speech) {\n    var _speech = JSON.parse(speech);\n    return _speech.nlp.entities.value; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["parsedSpeech"],
+                "outputVariable": "userPlace"
+            }
+        }],
+        "$leavingCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Save Income",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {
+                    "Authorization": "Bearer {{apiToken}}"
+                },
+                "method": "POST",
+                "body": "{\"Item\":{\"AccountID\":\"1\",\"Date\":\"{{todayDate}}\",\"IsCredit\":true,\"ManagementAccountID\":\"57\",\"Observation\":\"{{userPlace}}\",\"PaymentTypeID\":\"1\",\"Value\":\"{{userValue}}\"}}",
+                "uri": "https://api-erp.marketup.com/v1/FinancialEntry/Save",
+                "responseStatusVariable": "saveStatus",
+                "responseBodyVariable": "saveBody"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Save Payable Id",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1) {\n    var _payable = JSON.parse(inputVariable1);\n    return _payable.Item.EventID; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["saveBody"],
+                "outputVariable": "lastItemId"
+            }
+        }],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "fallback",
+            "$invalid": false
+        },
+        "id": "d84b5315-6092-42aa-8361-cc957b4c9c2e",
+        "root": false,
+        "$title": "Received",
+        "$position":
+        {
+            "top": "399px",
+            "left": "961px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "299fc8f2-f28f-43ac-b07e-bcd61f43670d":
+    {
+        "$contentActions": [
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "a9fec3bc-e9bd-4fa0-81ca-8a9c8c717c63",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content":
+                    {
+                        "state": "composing",
+                        "interval": 1000
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "a9fec3bc-e9bd-4fa0-81ca-8a9c8c717c63",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content":
+                        {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:39097"
+        },
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "585e8076-09e8-4d95-96aa-284e82e6a43b",
+                    "type": "text/plain",
+                    "content": "Opa! Aí, sim. R$ {{userValue}} para {{userPlace}}. Se o dinheiro tá entrando é porque tá tudo funcionando!"
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "585e8076-09e8-4d95-96aa-284e82e6a43b",
+                        "type": "text/plain",
+                        "content": "Opa! Aí, sim. R$ {{userValue}} para {{userPlace}}. Se o dinheiro tá entrando é porque tá tudo funcionando!"
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:39098"
+        },
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "536cf97e-857a-4949-afbe-377ae87d8656",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$invalid": false,
+            "$$hashKey": "object:39099"
+        }],
+        "$conditionOutputs": [],
+        "$enteringCustomActions": [],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "welcome",
+            "$invalid": false
+        },
+        "id": "299fc8f2-f28f-43ac-b07e-bcd61f43670d",
+        "root": false,
+        "$title": "Finish Received",
+        "$position":
+        {
+            "top": "372px",
+            "left": "1222px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "f09188dc-5799-49bf-90d3-cf967e8dab12":
+    {
+        "$contentActions": [
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "1f9610aa-9a9e-45f9-b27d-7ace8a0b22ba",
+                    "type": "application/vnd.lime.chatstate+json",
+                    "content":
+                    {
+                        "state": "composing",
+                        "interval": 1000
+                    }
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "1f9610aa-9a9e-45f9-b27d-7ace8a0b22ba",
+                        "type": "application/vnd.lime.chatstate+json",
+                        "content":
+                        {
+                            "state": "composing",
+                            "interval": 1000
+                        }
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:11292"
+        },
+        {
+            "action":
+            {
+                "type": "SendMessage",
+                "settings":
+                {
+                    "id": "5f5eb546-4eba-4fc5-8576-f47033963652",
+                    "type": "text/plain",
+                    "content": "Opa, beleza Xandão! Item apagado!"
+                },
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "5f5eb546-4eba-4fc5-8576-f47033963652",
+                        "type": "text/plain",
+                        "content": "Opa, beleza Xandão! Item apagado!"
+                    },
+                    "editable": true,
+                    "deletable": true,
+                    "position": "left"
+                }
+            },
+            "$invalid": false,
+            "$$hashKey": "object:11293"
+        },
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "5277d72e-004e-405b-bb26-210e9787d546",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$$hashKey": "object:2180",
+            "$invalid": false
+        }],
+        "$conditionOutputs": [],
+        "$enteringCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Process HTTP",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {
+                    "Authorization": "Bearer {{apiToken}}"
+                },
+                "method": "POST",
+                "body": "{\"Id\":\"{{lastItemId}}\"}",
+                "uri": "https://api-erp.marketup.com/v1/FinancialEvent/Delete"
+            }
+        }],
+        "$leavingCustomActions": [
+        {
+            "type": "ExecuteScript",
+            "$title": "Remove Last Item",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1) {\n    return 0; //Return value will be saved as \"Return value variable\" field name\n}",
+                "inputVariables": ["lastItemId"],
+                "outputVariable": "lastItemId"
+            }
+        }],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "welcome",
+            "$invalid": false
+        },
+        "id": "f09188dc-5799-49bf-90d3-cf967e8dab12",
+        "root": false,
+        "$title": "Delete Last Item",
+        "$position":
+        {
+            "top": "675px",
+            "left": "959px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    },
+    "63381330-90c1-4668-aacb-fb91901edc89":
+    {
+        "$contentActions": [
+        {
+            "input":
+            {
+                "bypass": true,
+                "$cardContent":
+                {
+                    "document":
+                    {
+                        "id": "c3cdef53-466b-41c7-aa18-95cf566625ee",
+                        "type": "text/plain",
+                        "content": "User input"
+                    },
+                    "editable": false,
+                    "deletable": true,
+                    "position": "right"
+                },
+                "$invalid": false
+            },
+            "$invalid": false,
+            "$$hashKey": "object:4835"
+        }],
+        "$conditionOutputs": [
+        {
+            "stateId": "f09188dc-5799-49bf-90d3-cf967e8dab12",
+            "$connId": "con_83",
+            "conditions": [
+            {
+                "source": "context",
+                "comparison": "exists",
+                "values": [],
+                "variable": "apiToken",
+                "$$hashKey": "object:4908"
+            }],
+            "$invalid": false,
+            "$$hashKey": "object:4891"
+        }],
+        "$enteringCustomActions": [
+        {
+            "type": "ProcessHttp",
+            "$title": "Login",
+            "$invalid": false,
+            "settings":
+            {
+                "headers":
+                {},
+                "method": "POST",
+                "body": "{\"Domain\":\"company_domain_here\",\"Login\":\"user_here\",\"LoginType\":\"1\",\"Password\":\"password_here\"}",
+                "responseBodyVariable": "apiToken",
+                "uri": "https://api-erp.marketup.com/v1/auth/authenticate-user"
+            }
+        },
+        {
+            "type": "ExecuteScript",
+            "$title": "Set Token",
+            "$invalid": false,
+            "settings":
+            {
+                "function": "run",
+                "source": "/**\n* All input variables needs to be passed as function param;\n* Objects received as param needs to be parsed. Ex.: JSON.parse(inputVariable1);\n* Objects returned needs to be stringfied. Ex.: JSON.stringify(inputVariable1);\n**/\nfunction run(inputVariable1) {\n    var _token = JSON.parse(inputVariable1);\n    return _token.AuthToken;\n}",
+                "inputVariables": ["apiToken"],
+                "outputVariable": "apiToken"
+            }
+        }],
+        "$leavingCustomActions": [],
+        "$inputSuggestions": [],
+        "$tags": [],
+        "$defaultOutput":
+        {
+            "stateId": "674a29d1-98e0-46d1-8982-bff5474df641",
+            "$invalid": false
+        },
+        "id": "63381330-90c1-4668-aacb-fb91901edc89",
+        "root": false,
+        "$title": "API Login 4",
+        "$position":
+        {
+            "top": "675px",
+            "left": "667px"
+        },
+        "$invalidContentActions": false,
+        "$invalidOutputs": false,
+        "$invalidCustomActions": false,
+        "$invalid": false
+    }
+}
