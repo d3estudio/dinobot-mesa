@@ -33,7 +33,7 @@ class HealthHandler(tornado.web.RequestHandler):
 
     def get_value(self, text):
         text = text.replace(".", "")
-        matchObj = re.search(r'r\$ *(\d{1,3}(\.\d{3})*|\d+)(\,\d{2})?', text)
+        matchObj = re.search(r'r\$ *(\d{1,99}(\.\d{3})*|\d+)(\,\d{2})?', text)
         if matchObj:
             return float(
                 matchObj.group().replace(
@@ -65,6 +65,7 @@ class HealthHandler(tornado.web.RequestHandler):
 
         file = open("/app/{}.flac".format(name), "rb")
 
+        # send to google storage
         try:
             response = requests.post(
                 url="https://www.googleapis.com/upload/storage/v1/b/{}"
@@ -87,6 +88,7 @@ class HealthHandler(tornado.web.RequestHandler):
                 "error_description": str(e)
             }))
 
+        # send to speech to text
         try:
             response = requests.post(
                 url="https://speech.googleapis.com/v1/speech:recognize",
@@ -117,6 +119,21 @@ class HealthHandler(tornado.web.RequestHandler):
         os.remove("/app/{}.flac".format(name))
         os.remove("/app/{}.wav".format(name))
         os.remove("/app/{}.ogg".format(name))
+
+        # delete from google storage
+        try:
+            response_delete = requests.delete(
+                url="https://www.googleapis.com/storage/v1/b/{}"
+                "/o/{}.flac".format(os.environ["GS_STORAGE"], name),
+                params={
+                    "key": os.environ["GS_KEY"],
+                }
+            )
+            logging.info("deleted from storage {}".format(
+                response_delete.content))
+        except Exception as e:
+            logging.error(e)
+            pass
 
         try:
 
