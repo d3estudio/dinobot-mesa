@@ -8,7 +8,7 @@
         </router-link>
       </div>
       <div class="uk-text-center uk-flex-first@s uk-width-1-1">
-        <img class="uk-width-1-1 uk-width-1-2@s uk-width-1-3@m" src="/logo.png"/>
+        <img class="uk-width-1-1 uk-width-1-2@s uk-width-1-3@m" src="../assets/logo.png"/>
       </div>
       <div class="uk-width-1-1 uk-width-1-2@s">
         <ul class="uk-subnav uk-subnav-pill">
@@ -31,7 +31,7 @@
       <div class="uk-width-1-3@s uk-width-1-1">
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img src="/cards/capa_dash_delivery.png" alt="">
+            <img src="../assets/cards/capa_dash_delivery.png" alt="">
           </div>
           <div class="uk-card-body">
             <div class="uk-card-title uk-grid-small uk-margin uk-flex-bottom" data-uk-grid>
@@ -68,7 +68,7 @@
       <div class="uk-width-1-3@s uk-width-1-1">
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img src="/cards/capa_dash_buffet.png" alt="">
+            <img src="../assets/cards/capa_dash_buffet.png" alt="">
           </div>
           <div class="uk-card-body">
             <div class="uk-card-title uk-grid-small uk-margin uk-flex-bottom" data-uk-grid>
@@ -105,7 +105,7 @@
       <div class="uk-width-1-3@s uk-width-1-1">
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img src="/cards/capa_dash_empresas.png" alt="">
+            <img src="../assets/cards/capa_dash_empresas.png" alt="">
           </div>
           <div class="uk-card-body">
             <div class="uk-card-title uk-grid-small uk-margin uk-flex-bottom" data-uk-grid>
