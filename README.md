@@ -25,8 +25,7 @@ Renomear `sample.env` para `.env` e preencher as credenciais. Em seguida:
 
 # licence
 
-```
-The MIT License
+```The MIT License
 
 Copyright (c) 2010-2018 Google, Inc. http://angularjs.org
 
